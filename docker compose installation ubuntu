@@ -1,0 +1,34 @@
+Connected, host fingerprint: ssh-rsa 0 F2:84:93:03:E9:B1:33:31:64:11:D9:02:A9:85:12:D4:35:FD:77:0F:DC:4C:42:0A:3A:0C:86:05:63:01:8F:AE
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-1028-gcp x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+11 packages can be updated.
+2 updates are security updates.
+
+
+Last login: Tue Mar 19 13:16:06 2019 from 74.125.41.105
+devekinandan@docker-2-cpu:~$ sudo docker-compose --version
+sudo: docker-compose: command not found
+devekinandan@docker-2-cpu:~$ 
+devekinandan@docker-2-cpu:~$ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   617    0   617    0     0    403      0 --:--:--  0:00:01 --:--:--   403
+100 11.2M  100 11.2M    0     0  2004k      0  0:00:05  0:00:05 --:--:-- 2879k
+devekinandan@docker-2-cpu:~$ sudo chmod +x /usr/local/bin/docker-compose
+devekinandan@docker-2-cpu:~$ 
+devekinandan@docker-2-cpu:~$ 
+devekinandan@docker-2-cpu:~$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+devekinandan@docker-2-cpu:~$ 
+devekinandan@docker-2-cpu:~$ 
+devekinandan@docker-2-cpu:~$ sudo docker-compose --version
+docker-compose version 1.23.2, build 1110ad01
+devekinandan@docker-2-cpu:~$ 
+devekinandan@docker-2-cpu:~$ 
+devekinandan@docker-2-cpu:~$ 
