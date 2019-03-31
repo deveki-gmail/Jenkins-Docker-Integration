@@ -1,4 +1,5 @@
 Create a jenkins user with root permission<br/>
+sudo useradd jenkins<br/>
 devekinandan@jenkins-server:~$ sudo usermod -a -G root jenkins
 <br/> and restart the jenkins <br/>
 devekinandan@jenkins-server:~$ sudo service jenkins restart
