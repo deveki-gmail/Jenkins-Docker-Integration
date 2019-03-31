@@ -1,0 +1,27 @@
+node {
+   stage('CheckOut'){
+       checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/deveki-gmail/greeting.git']]]
+   }
+   stage('mvn Package'){
+       sh label: '', script: 'mvn clean package'
+   }
+   stage('Build Docker Image'){
+       sh 'whoami'
+       sh 'docker build -t devekinandan/greeting:4.0.0 .'
+   }
+   stage('Push Docker Image'){
+		withCredentials([string(credentialsId: 'dockerHubPassword', variable: 'dockerHubPassword')]) {
+			sh "docker login -u devekinandan -p ${dockerHubPassword}"
+		}
+		sh 'docker push devekinandan/greeting:4.0.0'
+   }
+   
+   stage('Run Container on another server'){
+       def dockerRun = 'docker run -d -p 8085:8085 -e PORT=8085 devekinandan/greeting:4.0.0'
+	   sshagent(['google-cloud-instance-1']) {
+			sh "ssh -o StrictHostKeyChecking=no devekinandan@35.244.49.87 ${dockerRun}"
+			sh "ssh -o StrictHostKeyChecking=no devekinandan@35.243.191.34 ${dockerRun}"
+			sh "ssh -o StrictHostKeyChecking=no devekinandan@35.196.49.156 ${dockerRun}"
+		} 
+   }
+}
