@@ -1,0 +1,13 @@
+Create a jenkins user with root permission<br/>
+devekinandan@jenkins-server:~$ sudo usermod -a -G root jenkins
+<br/> and restart the jenkins <br/>
+devekinandan@jenkins-server:~$ sudo service jenkins restart
+<br/> Allow the user to access docker<br/>
+devekinandan@jenkins-server:~$ sudo usermod -a -G docker $USER
+<br/> and restart the jenkins <br/>
+
+devekinandan@jenkins-server:~$ sudo service jenkins restart
+<br/> and add jenkins to docker group <br/>
+devekinandan@jenkins-server:~$ sudo usermod -aG docker jenkins
+<br/> and restart the jenkins <br/>
+devekinandan@jenkins-server:~$ sudo service jenkins restart
