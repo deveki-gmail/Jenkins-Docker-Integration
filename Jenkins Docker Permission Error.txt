@@ -1,3 +1,12 @@
+----------------------------------------
+sudo useradd jenkins
+sudo usermod -a -G root jenkins
+sudo usermod -a -G docker $USER
+sudo usermod -aG docker jenkins
+sudo service jenkins restart
+-----------------------------------------
+
+
 Create a jenkins user with root permission<br/>
 sudo useradd jenkins<br/>
 devekinandan@jenkins-server:~$ sudo usermod -a -G root jenkins
